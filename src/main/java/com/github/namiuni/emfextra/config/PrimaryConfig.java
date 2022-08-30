@@ -11,10 +11,18 @@ import java.util.Map;
 @ConfigSerializable
 public class PrimaryConfig {
 
-    @Comment("Words needed to recognize shop signs")
+    @Comment("""
+            Words needed to recognize shop signs.
+            Note that legacy color codes are not supported.
+            Use minimessage.
+            https://webui.adventure.kyori.net/
+            permission
+            place: emfe.sign.place
+            use  : emfe.sign.use
+            """)
     private Component signName = MiniMessage.miniMessage().deserialize("<aqua>[EMFShop]</aqua>");
 
-    @Comment("")
+    @Comment("Configuration for webhook")
     private WebhookSettings webhookSettings = new WebhookSettings();
 
     public Component signName() {
@@ -27,6 +35,8 @@ public class PrimaryConfig {
 
     @ConfigSerializable
     public static class WebhookSettings {
+
+        @Comment("If you do not want to send webhooks, set the value to false.")
         private boolean enabled = true;
 
         @Comment("""
@@ -38,7 +48,6 @@ public class PrimaryConfig {
         @Comment("""
             Format per competition.
             e.g. LARGEST_FISH, SPECIFIC_FISH, MOST_FISH, SPECIFIC_RARITY, LARGEST_TOTAL
-            
             """)
         private Map<CompetitionType, Webhook> webhooks = Map.of(CompetitionType.LARGEST_FISH, new Webhook());
 

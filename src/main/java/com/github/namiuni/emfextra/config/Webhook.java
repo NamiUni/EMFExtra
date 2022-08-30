@@ -30,10 +30,10 @@ public final class Webhook {
 
     @ConfigSerializable
     public static class Embed {
-        private String title = "🎉 さかな釣り大会結果発表 🎉";
+        private String title = "🎉 Fishing competition results announced! 🎉";
         private String url = "";
         private int color = 12892415;
-        private String description = "1位は %emf_competition_place_size_1%cm の %emf_competition_place_fish_1% を釣り上げた %emf_competition_place_player_1% さんです！おめでとうございます！！";
+        private String description = "First place goes to %emf_competition_place_player_1% for catching a %emf_competition_place_fish_1%! Congratulations!";
         private Author author = new Author();
         private Image image = new Image();
         private Thumbnail thumbnail = new Thumbnail();
@@ -92,7 +92,7 @@ public final class Webhook {
 
         @ConfigSerializable
         public static class Image {
-            private String url = "https://media.discordapp.net/attachments/576377377161216010/670677714964840489/taikai.png";
+            private String url = "";
 
             public String url() {
                 return this.url;
