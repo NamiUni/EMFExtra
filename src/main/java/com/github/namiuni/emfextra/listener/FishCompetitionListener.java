@@ -38,10 +38,13 @@ public class FishCompetitionListener implements Listener {
     }
 
     private String createWebhook(CompetitionType competitionType) {
-        var webhook = configFactory.primaryConfig().webhookSettings().webhooks().get(competitionType);
         var gson = new Gson();
-        var json = gson.toJson(webhook);
-        return PlaceholderAPI.setPlaceholders(Bukkit.getOnlinePlayers().stream().findFirst().get(), ChatColor.stripColor(json));
+
+        var webhookTemplate = configFactory.primaryConfig().webhookSettings().webhooks().get(competitionType);
+        var formattedWebhook = gson.toJson(webhookTemplate);
+        var replacedPlaceholder = PlaceholderAPI.setPlaceholders(Bukkit.getOnlinePlayers().stream().findFirst().get(), formattedWebhook); // OfflinePlayerのパラメータはnullだとだめだった
+        var removedChatColor = ChatColor.stripColor(replacedPlaceholder);
+        return removedChatColor;
     }
 
     private void sendWebhook(String uri, String body) {

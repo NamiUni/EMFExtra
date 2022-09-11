@@ -6,11 +6,8 @@ import cloud.commandframework.paper.PaperCommandManager;
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
 import com.google.inject.Singleton;
-import org.apache.logging.log4j.Logger;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 import org.checkerframework.checker.nullness.qual.NonNull;
-import org.checkerframework.checker.nullness.qual.Nullable;
 import org.checkerframework.framework.qual.DefaultQualifier;
 
 import java.nio.file.Path;
